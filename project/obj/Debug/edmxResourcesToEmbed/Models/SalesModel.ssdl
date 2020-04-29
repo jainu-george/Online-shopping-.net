@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="billing" EntityType="Database1Model.Store.billing" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="category" EntityType="Database1Model.Store.category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="damageditem" EntityType="Database1Model.Store.damageditem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employee" EntityType="Database1Model.Store.employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employeeschedule" EntityType="Database1Model.Store.employeeschedule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login" EntityType="Database1Model.Store.Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="offer" EntityType="Database1Model.Store.offer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="orderitems" EntityType="Database1Model.Store.orderitems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="productdetails" EntityType="Database1Model.Store.productdetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="productstock" EntityType="Database1Model.Store.productstock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shop" EntityType="Database1Model.Store.shop" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shoporder" EntityType="Database1Model.Store.shoporder" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shoptransactions" EntityType="Database1Model.Store.shoptransactions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_billing_ToTable" Association="Database1Model.Store.FK_billing_ToTable">
+      <End Role="shoporder" EntitySet="shoporder" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_damageditem_ToTable_1" Association="Database1Model.Store.FK_damageditem_ToTable_1">
+      <End Role="shop" EntitySet="shop" />
+      <End Role="damageditem" EntitySet="damageditem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employeeschedule_ToTable" Association="Database1Model.Store.FK_employeeschedule_ToTable">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employeeschedule" EntitySet="employeeschedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employeeschedule_ToTable_1" Association="Database1Model.Store.FK_employeeschedule_ToTable_1">
+      <End Role="shop" EntitySet="shop" />
+      <End Role="employeeschedule" EntitySet="employeeschedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productstock_ToTable" Association="Database1Model.Store.FK_productstock_ToTable">
+      <End Role="productdetails" EntitySet="productdetails" />
+      <End Role="productstock" EntitySet="productstock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoporder_ToTable" Association="Database1Model.Store.FK_shoporder_ToTable">
+      <End Role="shop" EntitySet="shop" />
+      <End Role="shoporder" EntitySet="shoporder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoptransactions_ToTable" Association="Database1Model.Store.FK_shoptransactions_ToTable">
+      <End Role="shop" EntitySet="shop" />
+      <End Role="shoptransactions" EntitySet="shoptransactions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="billingid" />
+    </Key>
+    <Property Name="billingid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="date" />
+    <Property Name="shoporderid" Type="int" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="catid" />
+    </Key>
+    <Property Name="catid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="catname" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="damageditem">
+    <Key>
+      <PropertyRef Name="damaged" />
+    </Key>
+    <Property Name="damaged" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="shopid" Type="int" />
+    <Property Name="itemid" Type="int" />
+    <Property Name="date" Type="date" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="remarks" Type="varchar" MaxLength="50" />
+    <Property Name="productid" Type="int" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="empid" />
+    </Key>
+    <Property Name="empid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="empname" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar" MaxLength="50" />
+    <Property Name="phoneno" Type="int" />
+  </EntityType>
+  <EntityType Name="employeeschedule">
+    <Key>
+      <PropertyRef Name="scheduleid" />
+    </Key>
+    <Property Name="scheduleid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="empid" Type="int" />
+    <Property Name="date" Type="date" />
+    <Property Name="shopid" Type="int" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="uname" />
+    </Key>
+    <Property Name="uname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="utype" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="offer">
+    <Key>
+      <PropertyRef Name="offerid" />
+    </Key>
+    <Property Name="offerid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="offername" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="varchar" MaxLength="50" />
+    <Property Name="offertype" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="orderitems">
+    <Key>
+      <PropertyRef Name="itemid" />
+    </Key>
+    <Property Name="itemid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="total" Type="int" />
+    <Property Name="shoporderid" Type="int" />
+  </EntityType>
+  <EntityType Name="productdetails">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="manufacturing_date" Type="date" />
+  </EntityType>
+  <EntityType Name="productstock">
+    <Key>
+      <PropertyRef Name="productstockid" />
+    </Key>
+    <Property Name="productstockid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="int" />
+    <Property Name="discription" Type="varchar" MaxLength="50" />
+    <Property Name="picture" Type="varchar" MaxLength="200" />
+    <Property Name="stockquantity" Type="int" />
+    <Property Name="pname" Type="varchar" MaxLength="50" />
+    <Property Name="productid" Type="int" />
+  </EntityType>
+  <EntityType Name="shop">
+    <Key>
+      <PropertyRef Name="shopid" />
+    </Key>
+    <Property Name="shopid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="custname" Type="varchar" MaxLength="50" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="phoneno" Type="int" />
+    <Property Name="category" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="gstno" Type="int" />
+  </EntityType>
+  <EntityType Name="shoporder">
+    <Key>
+      <PropertyRef Name="shoporderid" />
+    </Key>
+    <Property Name="shoporderid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="shopid" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="total_amount" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="remarks" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="shoptransactions">
+    <Key>
+      <PropertyRef Name="shoptransactionid" />
+    </Key>
+    <Property Name="shoptransactionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="date" />
+    <Property Name="amount" Type="int" />
+    <Property Name="transactiontype" Type="varchar" MaxLength="50" />
+    <Property Name="shopid" Type="int" />
+  </EntityType>
+  <Association Name="FK_billing_ToTable">
+    <End Role="shoporder" Type="Database1Model.Store.shoporder" Multiplicity="0..1" />
+    <End Role="billing" Type="Database1Model.Store.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shoporder">
+        <PropertyRef Name="shoporderid" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="shoporderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_damageditem_ToTable_1">
+    <End Role="shop" Type="Database1Model.Store.shop" Multiplicity="0..1" />
+    <End Role="damageditem" Type="Database1Model.Store.damageditem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="damageditem">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employeeschedule_ToTable">
+    <End Role="employee" Type="Database1Model.Store.employee" Multiplicity="0..1" />
+    <End Role="employeeschedule" Type="Database1Model.Store.employeeschedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="empid" />
+      </Principal>
+      <Dependent Role="employeeschedule">
+        <PropertyRef Name="empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employeeschedule_ToTable_1">
+    <End Role="shop" Type="Database1Model.Store.shop" Multiplicity="0..1" />
+    <End Role="employeeschedule" Type="Database1Model.Store.employeeschedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="employeeschedule">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productstock_ToTable">
+    <End Role="productdetails" Type="Database1Model.Store.productdetails" Multiplicity="0..1" />
+    <End Role="productstock" Type="Database1Model.Store.productstock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productdetails">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="productstock">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoporder_ToTable">
+    <End Role="shop" Type="Database1Model.Store.shop" Multiplicity="1" />
+    <End Role="shoporder" Type="Database1Model.Store.shoporder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="shoporder">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoptransactions_ToTable">
+    <End Role="shop" Type="Database1Model.Store.shop" Multiplicity="0..1" />
+    <End Role="shoptransactions" Type="Database1Model.Store.shoptransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="shoptransactions">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities3">
+    <EntitySetMapping Name="billings">
+      <EntityTypeMapping TypeName="Database1Model.billing">
+        <MappingFragment StoreEntitySet="billing">
+          <ScalarProperty Name="billingid" ColumnName="billingid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="shoporderid" ColumnName="shoporderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="Database1Model.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="catname" ColumnName="catname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="damageditems">
+      <EntityTypeMapping TypeName="Database1Model.damageditem">
+        <MappingFragment StoreEntitySet="damageditem">
+          <ScalarProperty Name="damaged" ColumnName="damaged" />
+          <ScalarProperty Name="shopid" ColumnName="shopid" />
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="Database1Model.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="empid" ColumnName="empid" />
+          <ScalarProperty Name="empname" ColumnName="empname" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employeeschedules">
+      <EntityTypeMapping TypeName="Database1Model.employeeschedule">
+        <MappingFragment StoreEntitySet="employeeschedule">
+          <ScalarProperty Name="scheduleid" ColumnName="scheduleid" />
+          <ScalarProperty Name="empid" ColumnName="empid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="shopid" ColumnName="shopid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="Database1Model.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="utype" ColumnName="utype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="offers">
+      <EntityTypeMapping TypeName="Database1Model.offer">
+        <MappingFragment StoreEntitySet="offer">
+          <ScalarProperty Name="offerid" ColumnName="offerid" />
+          <ScalarProperty Name="offername" ColumnName="offername" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="offertype" ColumnName="offertype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderitems">
+      <EntityTypeMapping TypeName="Database1Model.orderitem">
+        <MappingFragment StoreEntitySet="orderitems">
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="shoporderid" ColumnName="shoporderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productdetails">
+      <EntityTypeMapping TypeName="Database1Model.productdetail">
+        <MappingFragment StoreEntitySet="productdetails">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="manufacturing_date" ColumnName="manufacturing_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productstocks">
+      <EntityTypeMapping TypeName="Database1Model.productstock">
+        <MappingFragment StoreEntitySet="productstock">
+          <ScalarProperty Name="productstockid" ColumnName="productstockid" />
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="stockquantity" ColumnName="stockquantity" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shops">
+      <EntityTypeMapping TypeName="Database1Model.shop">
+        <MappingFragment StoreEntitySet="shop">
+          <ScalarProperty Name="shopid" ColumnName="shopid" />
+          <ScalarProperty Name="custname" ColumnName="custname" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="gstno" ColumnName="gstno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shoporders">
+      <EntityTypeMapping TypeName="Database1Model.shoporder">
+        <MappingFragment StoreEntitySet="shoporder">
+          <ScalarProperty Name="shoporderid" ColumnName="shoporderid" />
+          <ScalarProperty Name="shopid" ColumnName="shopid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shoptransactions">
+      <EntityTypeMapping TypeName="Database1Model.shoptransaction">
+        <MappingFragment StoreEntitySet="shoptransactions">
+          <ScalarProperty Name="shoptransactionid" ColumnName="shoptransactionid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="transactiontype" ColumnName="transactiontype" />
+          <ScalarProperty Name="shopid" ColumnName="shopid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

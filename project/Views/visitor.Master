@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../visitorassets/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../visitorassets/vendor/bootstrap/css/bootstrap.min.css">
+ 	<link rel="stylesheet" type="text/css" href="../visitorassets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../visitorassets/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+     <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+	
+ 	<script src="../visitorassets/vendor/jquery/jquery-3.2.1.min.js"></script>
+  	<script src="../visitorassets/js/main.js"></script>
+
+</body>
+</html>
+
+

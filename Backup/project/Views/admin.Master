@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="../Content/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="../Content/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="../Content/css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="../Content/css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+<script src="../Scripts/js/jquery-1.10.2.min.js"></script> 
+<!--Easy Pie Chart-->
+<!--skycons-icons-->
+<script src="../Scripts/js/skycons.js"></script>
+
+<script src="../Scripts/js/jquery.easydropdown.js"></script>
+
+<!--//skycons-icons-->
+</head> 
+<body>
+   <div class="page-container">
+   <!--/content-inner-->
+	<div class="left-content">
+	   <div class="inner-content">
+		<!-- header-starts -->
+			<div class="header-section">
+						<!--menu-right-->
+						<div class="top_menu">
+						         
+								<div class="profile_details_left">
+									<ul class="nofitications-dropdown">
+											 <li></li>					   		
+							<div class="clearfix"></div>	
+								</ul>
+							</div>
+							<div class="clearfix"></div>	
+							<!--//profile_details-->
+						</div>
+						<!--//menu-right-->
+					<div class="clearfix"></div>
+				</div>
+					<!-- //header-ends -->
+           <%
+               if (TempData["message"] != null)
+               {
+                   %>
+
+           <h1><%=  TempData["message"] %></h1>
+           <%
+               }
+               
+               
+                %>
+						<asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+									 <!--footer section start-->
+										<footer>
+										   <p>&copy 2018 SalesTool</p>
+										</footer>
+									<!--footer section end-->
+								</div>
+							</div>
+				<!--//content-inner-->
+			<!--/sidebar-menu-->
+				<div class="sidebar-menu">
+					<header class="logo">
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> 
+                        <a href="../admin/index"> <span id="logo"> <h1>SalesTool</h1></span> 
+					<!--<img id="logo" src="" alt="Logo"/>--> 
+				  </a> 
+				</header>
+			<div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+			<!--/down-->
+							<div class="down">	
+									  <a href="#"><img src="../Content/images/sales.png"></a>
+									  <a href="#"><span class=" name-caret">ADMINISTRATOR</span></a>
+									 <p>System Administrator </p>
+									 
+									<ul>
+									<li><a class="tooltips" href="#"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
+										<li><a class="tooltips" href="../admin/changepassword"><span>Change Password</span><i class="lnr lnr-cog"></i></a></li>
+										<li><a class="tooltips" href="../Visitor/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+										</ul>
+									</div>
+							   <!--//down-->
+                           <div class="menu">
+									<ul id="menu" >
+										<li><a href="../admin/index"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+										 <li id="menu-academico" ><a href="../admin/category"><i class="fa fa-table"></i> <span> Category</span> </a></li>
+										    <li id="Li5" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Products</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+											 <ul id="Ul1" >
+												<li id="Li6" ><a href="../admin/AddProductStock">Add product stocks</a></li>
+												<li id="Li8" ><a href="../admin/ShowProductStock">Show product stocks</a></li>
+												<li id="Li9" ><a href="../admin/addproductdetails">Add product details</a></li>
+												<li id="Li10" ><a href="../admin/showproductdetails">Show product details</a></li>
+											  </ul>
+										 </li> 
+										     <li id="Li13" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Employee</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+											 <ul id="Ul3" >
+												<li id="Li14" ><a href="../admin/employees">Manage Employee</a></li> 
+												<li id="Li16" ><a href="../admin/scheduleEmployee">Shedule Employee</a></li> 
+											  </ul>
+										 </li> 
+										 <li id="Li3" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Shops</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+											 <ul id="Ul2" >
+												<li id="Li4" ><a href="../admin/shops">New </a></li>
+												<li id="Li11" ><a href="../admin/viewshops">Show</a></li>
+											  </ul>
+										 </li> 
+                                        	  
+                                        <li id="Li1" ><a href="../admin/shoporder"><i class="fa fa-file-text-o"></i> <span>Shop Orders</span></a>
+                                        </li>
+										  <li id="Li2" ><a href="../admin/offers"><i class="fa fa-file-text-o"></i> <span>View offers</span></a>
+                                        </li>
+										 
+									
+									<li id="menu-comunicacao" ><a href="../admin/changepassword"><i class="fa fa-smile-o"></i> <span>Change password</span></a>
+                                        </li>
+
+								  </ul>
+								</div>
+							  </div>
+							  <div class="clearfix"></div>		
+							</div>
+							<script>
+							    var toggle = true;
+
+							    $(".sidebar-icon").click(function () {
+							        if (toggle) {
+							            $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+							            $("#menu span").css({ "position": "absolute" });
+							        }
+							        else {
+							            $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+							            setTimeout(function () {
+							                $("#menu span").css({ "position": "relative" });
+							            }, 400);
+							        }
+
+							        toggle = !toggle;
+							    });
+							</script>
+<!--js -->
+<link rel="stylesheet" href="../Content/css/vroom.css">
+<script type="text/javascript" src="../Scripts/js/vroom.js"></script>
+<script type="text/javascript" src="../Scripts/js/TweenLite.min.js"></script>
+<script type="text/javascript" src="../Scripts/js/CSSPlugin.min.js"></script>
+<script src="../Scripts/js/jquery.nicescroll.js"></script>
+<script src="../Scripts/js/scripts.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+   <script src="../Scripts/js/bootstrap.min.js"></script>
+</body>
+</html>

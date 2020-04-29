@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Database1Entities3" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="billings" EntityType="Database1Model.billing" />
+    <EntitySet Name="categories" EntityType="Database1Model.category" />
+    <EntitySet Name="damageditems" EntityType="Database1Model.damageditem" />
+    <EntitySet Name="employees" EntityType="Database1Model.employee" />
+    <EntitySet Name="employeeschedules" EntityType="Database1Model.employeeschedule" />
+    <EntitySet Name="Logins" EntityType="Database1Model.Login" />
+    <EntitySet Name="offers" EntityType="Database1Model.offer" />
+    <EntitySet Name="orderitems" EntityType="Database1Model.orderitem" />
+    <EntitySet Name="productdetails" EntityType="Database1Model.productdetail" />
+    <EntitySet Name="productstocks" EntityType="Database1Model.productstock" />
+    <EntitySet Name="shops" EntityType="Database1Model.shop" />
+    <EntitySet Name="shoporders" EntityType="Database1Model.shoporder" />
+    <EntitySet Name="shoptransactions" EntityType="Database1Model.shoptransaction" />
+    <AssociationSet Name="FK_billing_ToTable" Association="Database1Model.FK_billing_ToTable">
+      <End Role="shoporder" EntitySet="shoporders" />
+      <End Role="billing" EntitySet="billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_damageditem_ToTable_1" Association="Database1Model.FK_damageditem_ToTable_1">
+      <End Role="shop" EntitySet="shops" />
+      <End Role="damageditem" EntitySet="damageditems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employeeschedule_ToTable" Association="Database1Model.FK_employeeschedule_ToTable">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="employeeschedule" EntitySet="employeeschedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employeeschedule_ToTable_1" Association="Database1Model.FK_employeeschedule_ToTable_1">
+      <End Role="shop" EntitySet="shops" />
+      <End Role="employeeschedule" EntitySet="employeeschedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productstock_ToTable" Association="Database1Model.FK_productstock_ToTable">
+      <End Role="productdetails" EntitySet="productdetails" />
+      <End Role="productstock" EntitySet="productstocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoporder_ToTable" Association="Database1Model.FK_shoporder_ToTable">
+      <End Role="shop" EntitySet="shops" />
+      <End Role="shoporder" EntitySet="shoporders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoptransactions_ToTable" Association="Database1Model.FK_shoptransactions_ToTable">
+      <End Role="shop" EntitySet="shops" />
+      <End Role="shoptransactions" EntitySet="shoptransactions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="billingid" />
+    </Key>
+    <Property Name="billingid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="shoporderid" Type="Int32" />
+    <NavigationProperty Name="shoporder" Relationship="Database1Model.FK_billing_ToTable" FromRole="billing" ToRole="shoporder" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="catid" />
+    </Key>
+    <Property Name="catid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="catname" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="damageditem">
+    <Key>
+      <PropertyRef Name="damaged" />
+    </Key>
+    <Property Name="damaged" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shopid" Type="Int32" />
+    <Property Name="itemid" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="productid" Type="Int32" />
+    <NavigationProperty Name="shop" Relationship="Database1Model.FK_damageditem_ToTable_1" FromRole="damageditem" ToRole="shop" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="empid" />
+    </Key>
+    <Property Name="empid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="empname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="department" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="phoneno" Type="Int32" />
+    <NavigationProperty Name="employeeschedules" Relationship="Database1Model.FK_employeeschedule_ToTable" FromRole="employee" ToRole="employeeschedule" />
+  </EntityType>
+  <EntityType Name="employeeschedule">
+    <Key>
+      <PropertyRef Name="scheduleid" />
+    </Key>
+    <Property Name="scheduleid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="empid" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="shopid" Type="Int32" />
+    <NavigationProperty Name="employee" Relationship="Database1Model.FK_employeeschedule_ToTable" FromRole="employeeschedule" ToRole="employee" />
+    <NavigationProperty Name="shop" Relationship="Database1Model.FK_employeeschedule_ToTable_1" FromRole="employeeschedule" ToRole="shop" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="uname" />
+    </Key>
+    <Property Name="uname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="utype" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="offer">
+    <Key>
+      <PropertyRef Name="offerid" />
+    </Key>
+    <Property Name="offerid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="offername" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="offertype" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="orderitem">
+    <Key>
+      <PropertyRef Name="itemid" />
+    </Key>
+    <Property Name="itemid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="total" Type="Int32" />
+    <Property Name="shoporderid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="productdetail">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="manufacturing_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="productstocks" Relationship="Database1Model.FK_productstock_ToTable" FromRole="productdetails" ToRole="productstock" />
+  </EntityType>
+  <EntityType Name="productstock">
+    <Key>
+      <PropertyRef Name="productstockid" />
+    </Key>
+    <Property Name="productstockid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="catid" Type="Int32" />
+    <Property Name="discription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="picture" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="stockquantity" Type="Int32" />
+    <Property Name="pname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="productid" Type="Int32" />
+    <NavigationProperty Name="productdetail" Relationship="Database1Model.FK_productstock_ToTable" FromRole="productstock" ToRole="productdetails" />
+  </EntityType>
+  <EntityType Name="shop">
+    <Key>
+      <PropertyRef Name="shopid" />
+    </Key>
+    <Property Name="shopid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="custname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="location" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="phoneno" Type="Int32" />
+    <Property Name="category" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="username" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="gstno" Type="Int32" />
+    <NavigationProperty Name="damageditems" Relationship="Database1Model.FK_damageditem_ToTable_1" FromRole="shop" ToRole="damageditem" />
+    <NavigationProperty Name="employeeschedules" Relationship="Database1Model.FK_employeeschedule_ToTable_1" FromRole="shop" ToRole="employeeschedule" />
+    <NavigationProperty Name="shoporders" Relationship="Database1Model.FK_shoporder_ToTable" FromRole="shop" ToRole="shoporder" />
+    <NavigationProperty Name="shoptransactions" Relationship="Database1Model.FK_shoptransactions_ToTable" FromRole="shop" ToRole="shoptransactions" />
+  </EntityType>
+  <EntityType Name="shoporder">
+    <Key>
+      <PropertyRef Name="shoporderid" />
+    </Key>
+    <Property Name="shoporderid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shopid" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="total_amount" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="billings" Relationship="Database1Model.FK_billing_ToTable" FromRole="shoporder" ToRole="billing" />
+    <NavigationProperty Name="shop" Relationship="Database1Model.FK_shoporder_ToTable" FromRole="shoporder" ToRole="shop" />
+  </EntityType>
+  <EntityType Name="shoptransaction">
+    <Key>
+      <PropertyRef Name="shoptransactionid" />
+    </Key>
+    <Property Name="shoptransactionid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="transactiontype" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="shopid" Type="Int32" />
+    <NavigationProperty Name="shop" Relationship="Database1Model.FK_shoptransactions_ToTable" FromRole="shoptransactions" ToRole="shop" />
+  </EntityType>
+  <Association Name="FK_billing_ToTable">
+    <End Role="shoporder" Type="Database1Model.shoporder" Multiplicity="0..1" />
+    <End Role="billing" Type="Database1Model.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shoporder">
+        <PropertyRef Name="shoporderid" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="shoporderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_damageditem_ToTable_1">
+    <End Role="shop" Type="Database1Model.shop" Multiplicity="0..1" />
+    <End Role="damageditem" Type="Database1Model.damageditem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="damageditem">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employeeschedule_ToTable">
+    <End Role="employee" Type="Database1Model.employee" Multiplicity="0..1" />
+    <End Role="employeeschedule" Type="Database1Model.employeeschedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="empid" />
+      </Principal>
+      <Dependent Role="employeeschedule">
+        <PropertyRef Name="empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employeeschedule_ToTable_1">
+    <End Role="shop" Type="Database1Model.shop" Multiplicity="0..1" />
+    <End Role="employeeschedule" Type="Database1Model.employeeschedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="employeeschedule">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productstock_ToTable">
+    <End Role="productdetails" Type="Database1Model.productdetail" Multiplicity="0..1" />
+    <End Role="productstock" Type="Database1Model.productstock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productdetails">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="productstock">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoporder_ToTable">
+    <End Role="shop" Type="Database1Model.shop" Multiplicity="1" />
+    <End Role="shoporder" Type="Database1Model.shoporder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="shoporder">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoptransactions_ToTable">
+    <End Role="shop" Type="Database1Model.shop" Multiplicity="0..1" />
+    <End Role="shoptransactions" Type="Database1Model.shoptransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shop">
+        <PropertyRef Name="shopid" />
+      </Principal>
+      <Dependent Role="shoptransactions">
+        <PropertyRef Name="shopid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
